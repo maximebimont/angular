@@ -50,8 +50,8 @@ jobs:
           disable-package-manager-cache: true
       - name: Setup Bazel
         uses: angular/dev-infra/github-actions/bazel/setup@d3574e167f8736ba725a441d2ee9e987fcdf2225
-      - name: Setup Bazel RBE
-        uses: angular/dev-infra/github-actions/bazel/configure-remote@d3574e167f8736ba725a441d2ee9e987fcdf2225
+      # - name: Setup Bazel RBE
+      #   uses: angular/dev-infra/github-actions/bazel/configure-remote@d3574e167f8736ba725a441d2ee9e987fcdf2225
       - name: Install node modules
         run: pnpm install --frozen-lockfile
       - name: Run unit tests
@@ -113,8 +113,8 @@ jobs:
         uses: angular/dev-infra/github-actions/npm/checkout-and-setup-node@d3574e167f8736ba725a441d2ee9e987fcdf2225
       - name: Setup Bazel
         uses: angular/dev-infra/github-actions/bazel/setup@d3574e167f8736ba725a441d2ee9e987fcdf2225
-      - name: Setup Bazel RBE
-        uses: angular/dev-infra/github-actions/bazel/configure-remote@d3574e167f8736ba725a441d2ee9e987fcdf2225
+      # - name: Setup Bazel RBE
+      #   uses: angular/dev-infra/github-actions/bazel/configure-remote@d3574e167f8736ba725a441d2ee9e987fcdf2225
       - name: Install node modules
         run: pnpm install --frozen-lockfile
       - name: Run tests
@@ -130,8 +130,8 @@ jobs:
         uses: angular/dev-infra/github-actions/npm/checkout-and-setup-node@d3574e167f8736ba725a441d2ee9e987fcdf2225
       - name: Setup Bazel
         uses: angular/dev-infra/github-actions/bazel/setup@d3574e167f8736ba725a441d2ee9e987fcdf2225
-      - name: Setup Bazel RBE
-        uses: angular/dev-infra/github-actions/bazel/configure-remote@d3574e167f8736ba725a441d2ee9e987fcdf2225
+      # - name: Setup Bazel RBE
+      #   uses: angular/dev-infra/github-actions/bazel/configure-remote@d3574e167f8736ba725a441d2ee9e987fcdf2225
       - name: Install node modules
         run: pnpm install --frozen-lockfile
       - name: Run tests
