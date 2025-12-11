@@ -41,5 +41,5 @@ npm_package(
 )
 EOT
 _sedi 's#\# PLACE_HOLDER_FOR_angular/angular_packages/language-service/build.sh#"//.angular_packages/language-service:package.json", \# FOR TESTING ONLY! DO NOT COMMIT THIS LINE!#' WORKSPACE
-pnpm add @angular/language-service@file:".angular_packages/language-service"
+pnpm add --ignore-scripts @angular/language-service@file:".angular_packages/language-service"
 popd
