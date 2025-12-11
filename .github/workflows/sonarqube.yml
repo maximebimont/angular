@@ -15,11 +15,11 @@ jobs:
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v6
         env:
-          SONAR_TOKEN: 2cdc85484293ff87d43c8de399a112171b19da72
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
             args: >
-              -Dsonar.projectKey=angular-angular
-              -Dsonar.organization=angular
+              -Dsonar.projectKey=maximebimont_angular
+              -Dsonar.organization=maximebimont
               -Dsonar.host.url=https://sonarcloud.io
               -Dsonar.sources=.
               -Dsonar.exclusions=**/node_modules/**,**/dist/**,**/bazel-*/**,**/*.spec.ts,**/test/**,**/*.test.ts,**/src/test/**,**/src/**/*.spec.ts
