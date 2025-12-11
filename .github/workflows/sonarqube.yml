@@ -1,58 +1,19 @@
-# .github/workflows/sonarqube.yml
-name: SonarQube Analysis
-
+name: Build
 on:
   push:
-    branches: [ "main", "master" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main", "master" ]
-
+    types: [opened, synchronize, reopened]
 jobs:
   sonarqube:
     name: SonarQube
-    runs-on: ubuntu-latest
-
+    runs-on: windows-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-
-      # Si ton projet n’est pas Java/Maven, adapte ou supprime cette étape
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: "17"
-
-      - name: Cache Maven repository
-        uses: actions/cache@v4
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
-
-      - name: Build (Maven)
-        run: mvn -B clean verify
-
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v6
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} # ex: https://sonarqube.mondomaine.com
-        with:
-          # args optionnel : complète si tu ne configures pas tout dans pom.xml / sonar-project.properties
-          args: >
-            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
-            -Dsonar.qualitygate.wait=true
-
-      # Optionnel : étape dédiée pour le Quality Gate (utile avec SonarQube Server)
-      - name: SonarQube Quality Gate check
-        if: always()
-        uses: sonarsource/sonarqube-quality-gate-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        with:
-          pollingTimeoutSec: 600
+          SONAR_TOKEN: 2cdc85484293ff87d43c8de399a112171b19da72
